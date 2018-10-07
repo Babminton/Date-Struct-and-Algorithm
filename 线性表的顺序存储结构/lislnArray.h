@@ -3,7 +3,7 @@ using namespace std;
 
 #define MaxSize 100
 
-typedef int ElemType;
+typedef char ElemType;
 typedef struct {
 	ElemType data[MaxSize]; //存放顺序表数据
 	int length;
