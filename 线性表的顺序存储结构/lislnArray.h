@@ -3,7 +3,7 @@ using namespace std;
 
 #define MaxSize 100
 
-typedef char ElemType;
+typedef int ElemType;
 typedef struct {
 	ElemType data[MaxSize]; //存放顺序表数据
 	int length;
@@ -24,8 +24,6 @@ bool ListInsert(SqList &L, int pos, ElemType item);
 //从线性表中删除第一个与指定值匹配的元素
 bool ListDelete(SqList &L, int pos, ElemType &item);
 
-//从线性表中删除第一个与指定值匹配的元素，并返回其逻辑位置
-int ListDelete_key(SqList L, ElemType item);
 
 //获取顺序表中指定位置上的数据元素 
 bool GetElem(SqList L, int pos, ElemType &item);
@@ -35,3 +33,6 @@ int Find(SqList L, ElemType item);
 
 //遍历输出线性表
 void TraverseList(SqList L);
+
+//将顺序表L2中的数据合并到顺序表L1的尾部
+int MergeList(SqList &L1, SqList L2);

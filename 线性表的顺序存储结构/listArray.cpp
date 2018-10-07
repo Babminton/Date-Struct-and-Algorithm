@@ -98,3 +98,12 @@ void TraverseList(SqList L)
 		cout << L.data[i] << "  ";
 	cout << endl;
 }
+int MergeList(SqList &L1, SqList L2) {   
+
+	for (int i = 1; i <= L2.length; i++) {
+		ElemType t;
+		GetElem(L2, i, t);
+		ListInsert(L1, L1.length + 1, t);
+	}
+	return 1;
+}
