@@ -132,4 +132,34 @@ void DestroyList(LinkNode* &L)
 		delete p;
 	}
 }
-
+//向递增有序的单链表L中插入新的元素item，插入后单链表仍然有序  //@1
+/*
+bool ListInsert_order(LinkNode *L, ElemType item)
+{
+	LinkNode *p = L;   //头结点
+	LinkNode *t = new LinkNode;   //分配内存空间
+	while (p->next && p->next->data < item) {
+		p = p->next;
+	}
+	t->data = item;
+	t->next = p->next;
+	p->next = t;
+	return true;
+}
+*/
+int  ListInsert_order(LinkNode *L, ElemType item)   //@2
+{
+	LinkNode *p = L;   //头结点
+	LinkNode *t = new LinkNode;   //分配内存空间
+	while (p->next&&item>p->next->data)
+		p = p->next;  //结点向后移动		
+		if(p->next==NULL) {
+		 t->data = item;
+		 p->next = t;
+		 return 1;
+ }
+		t->data = item;
+		t->next = p->next;
+		p->next = t;
+		return 1;
+}

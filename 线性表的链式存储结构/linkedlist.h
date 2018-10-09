@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-typedef char ElemType;  //ElemType为数据元素的数据类型
+typedef int ElemType;  //ElemType为数据元素的数据类型
 typedef struct LNode    //LNode为结点类型名
 {
 	ElemType data;      //data代表数据元素
@@ -38,4 +38,10 @@ bool ListDelete(LinkNode *L, ElemType item);
 
 //撤销单链表
 void DestroyList(LinkNode* &L);
+
+//向递增有序的单链表L中插入新的元素item，插入后单链表仍然有序  @1 
+//bool  ListInsert_order(LinkNode *L, ElemType item);    
+
+//向递增有序的单链表L中插入新的元素item，插入后单链表仍然有序  @2
+int  ListInsert_order(LinkNode *L, ElemType item);   
 
