@@ -19,7 +19,7 @@ bool ListEmpty(LinkNode *L);
 int ListLength(LinkNode *L);
 
 //遍历单链表
-void TraverseList(LinkNode *L);
+void TraverseLists(LinkNode *L);
 
 //返回第一个与指定值匹配的元素位置
 int Find_item(LinkNode *L, ElemType item);
@@ -43,5 +43,7 @@ void DestroyList(LinkNode* &L);
 //bool  ListInsert_order(LinkNode *L, ElemType item);    
 
 //向递增有序的单链表L中插入新的元素item，插入后单链表仍然有序  @2
-int  ListInsert_order(LinkNode *L, ElemType item);   
+int  ListInsert_order(LinkNode *L, ElemType item);  
 
+//把单链表中的数据域最大结点删除，其余结点继续保留，返回最大结点的数据域
+bool Delete_max(LinkNode *L, ElemType &item);

@@ -5,25 +5,20 @@ int main() {
 
 	LinkNode *mylist;  //定义单链表
 	InitList(mylist);   //初始化操作
-	for (int i = 0; i<10; i++)
-	{
-		ListInsert(mylist, 1 + i, i + 1);
 
-	}
-	for (int i = 0; i<10; i++)
-	{
+	ElemType nums[] = { 2, 9, 5, 7 };
+	for (int i = 1; i <= 4; i++)
+		ListInsert(mylist, i, nums[i - 1]);
 
-		ListInsert(mylist, 11 + i, i + 20);
+	cout << "序列为：";
+ 	TraverseLists(mylist);
+	ElemType temp;
+	if (Delete_max(mylist, temp)) {
+		cout << "删除的最大值为：" << temp << endl;
+		cout << "删除后的元素为：";
+		TraverseLists(mylist);
 	}
-	cout << "此时单链表的数据是";
-	TraverseList(mylist);
-
-	if (ListInsert_order(mylist, 15) == 1)
-	{
-		cout << "单链表的数据是：";
-		TraverseList(mylist);
-	}
-	else cout<<"程序失败"<<endl;
 	return 0;
-}
+	//程序错误
 
+}
