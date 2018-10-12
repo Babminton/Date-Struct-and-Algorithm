@@ -29,48 +29,41 @@ int ListLength(LinkNode *L)
 	return n;
 }
 //  遍历单链表
-void TraverseLists(LinkNode *L) {
-	//L为指向单链表的头指针
-	LinkNode *p = L->next;   //p是首结点
+void  TraverseList(LinkNode *L)   //遍历单链表
+{
+	LinkNode *p = L->next;
 	while (p)
 	{
-		cout << p->data << "  ";
+		cout << p->data.sid << "  " << p->data.score << endl;
 		p = p->next;
 	}
-	cout << endl;
 }
-
-//返回第一个与指定值匹配的元素位置
-int Find_item(LinkNode *L, ElemType item)
-{  //L为指向单链表的头指针
-LinkNode *p = L->next;
-int pos = 1; //结点位序
-while (p && p->data != item)
-{ //从单链表第一个结点开始顺序查找所有结点
-p = p->next;
-pos++;
+int ListDeletefour(LinkNode *L, int number)
+{
+	LinkNode *p = L, *t;
+	while (p->next)
+	{
+		if (p->next->data.sid == number)  break;
+		p = p->next;
+	}
+	if (p->next == NULL) {
+		cout << "删除的元素不存在" << endl;
+	}
+	t = p->next;
+	p->next = t->next;
+	delete t;
+	return 1;
 }
-if (p) return pos; //返回位置编号
-  else  return 0;    //查找失败
+//撤销单链表
+void DestroyList(LinkNode* &L)
+{      //L为指向单链表的头指针
+	LinkNode *p;
+	while (L) {
+		p = L;
+		L = L->next;  // 使用L指针保存下一结点的位置
+		delete p;
+	}
 }
-
-//获取单链表中指定位置上的数据元素
-bool Find_pos(LinkNode *L, int pos, ElemType &item)
-{  //L为指向单链表的头指针
-LinkNode *p = L->next;
-int i = 1; //结点位序
-while (p && i != pos) {
-p = p->next;  i++;
-}
-if (p == NULL) { //查找不成功，退出运行
-cout << "位置无效" << endl;
-return false;
-}
-item = p->data;
-return true;
-}
-
-//向线性表指定位置插入一个新元素   
 bool ListInsert(LinkNode *L, int pos, ElemType item)
 {
 	LinkNode *p = L;  int i = 0;
@@ -85,99 +78,5 @@ bool ListInsert(LinkNode *L, int pos, ElemType item)
 	t->next = p->next; //②
 	p->next = t; //③
 	return true;
-}
-
-//从线性表中删除指定位置的元素
-bool ListDeletpos(LinkNode *L, int pos, ElemType &item)
-{
-LinkNode *p = L, *t;  int i = 0;
-while (p->next && i != pos - 1) { //查找pos的前驱
-p = p->next;   i++;
-}
-if (p->next == NULL) { //查找不成功，退出运行
-cout << "删除位置无效" << endl;
-return false;
-}
-t = p->next;	    //①t为被删除结点
-p->next = t->next; //②删除t的链接关系
-item = t->data; //保存被删除结点的值
-delete t;		   //③释放被删结点
-return true;
-}
-//从线性表中删除第一个与指定值匹配的元素
-bool ListDelete(LinkNode *L, ElemType item)
-{
-	LinkNode *p = L, *t;
-	while (p->next && p->next->data != item) {
-		p = p->next;
-	}
-	if (p->next == NULL) { //查找不成功，退出运行
-		cout << "删除元素不存在" << endl;
-		return false;
-	}
-	t = p->next;	    //①t为被删除结点
-	p->next = t->next; //②删除t的链接关系
-	delete t;		   //③释放被删结点
-	return true;
-}
-
-//撤销单链表
-void DestroyList(LinkNode* &L)
-{      //L为指向单链表的头指针
-	LinkNode *p;
-	while (L) {
-		p = L;
-		L = L->next;  // 使用L指针保存下一结点的位置
-		delete p;
-	}
-}
-//向递增有序的单链表L中插入新的元素item，插入后单链表仍然有序  
-/*
-bool ListInsert_order(LinkNode *L, ElemType item){
-	LinkNode *p = L;   //头结点
-	LinkNode *t = new LinkNode;   //分配内存空间
-	while (p->next && p->next->data < item) {
-		p = p->next;
-	}
-	t->data = item;
-	t->next = p->next;
-	p->next = t;
-	return true;
-}
-*/
-int  ListInsert_order(LinkNode *L, ElemType item)   //@2
-{
-	LinkNode *p = L;   //头结点
-	LinkNode *t = new LinkNode;   //分配内存空间
-	while (p->next&&item>p->next->data)
-		p = p->next;  //结点向后移动		
-		if(p->next==NULL) {
-		 t->data = item;
-		 p->next = t;
-		 return 1;
- }
-		t->data = item;
-		t->next = p->next;
-		p->next = t;
-		return 1;
-}
-//把单链表中的数据域最大结点删除，其余结点继续保留，返回最大结点的数据域
-bool Delete_max(LinkNode *L, ElemType &item) {
-	LinkNode *pre, *p, *max;
-	p = L; pre = L;  max = L->next;
-	while (p->next) {
-		if (p->next->data > max->data) {
-			max = p->next;   //结点变更
-			pre = p;
-		}
-		p = p->next;
-	}
-	if (max != NULL) {
-		pre->next = max->next;
-		item = max->data;
-		delete max;
-		return true;
-	}
-	return false;
 }
 
