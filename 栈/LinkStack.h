@@ -29,4 +29,3 @@ void Destroy(LinkStNode* &S);
 bool TraverseStack(LinkStNode *S);
 //еп╤о╩ьнд
 bool IsReverse(char *s);
-

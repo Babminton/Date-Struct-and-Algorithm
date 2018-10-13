@@ -95,7 +95,7 @@ bool TraverseStack(LinkStNode *S) {
 	cout << endl;
 	return 0;
 }
-//判断回文
+// 判断回文
 bool IsReverse(char *s) {
 	int i = 0;
 	ElemType e;
