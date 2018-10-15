@@ -116,3 +116,31 @@ bool IsReverse(char *s) {
 	cout << "是回文" << endl;
 	return true;
 }
+//数值转换
+void conversion(int a, int b) {
+	LinkStNode *mylinkstnode;
+	InitStack(mylinkstnode);
+	ElemType item,x;
+	char z = 'A';
+	cout << "请输入你想要转换的"<<a<<"进制数" << endl;
+	cin >> item;
+	while (item) {
+		x = item%b;
+		Push(mylinkstnode, x);    //余数进栈
+		item = item / b;          //除数
+	}
+	   int e = 0;
+	   cout<<"转换成"<<b<<"进制数是：";
+	     while (!StackEmpty(mylinkstnode))
+		     {
+			 Pop(mylinkstnode, e);     //逐个出栈
+			if (e >= 10 && e <= 15) {  //结果为十六进制时用到转换为字母
+				char y;
+					y= z + e - 10;
+				cout << y;
+			}
+			else
+				cout << e;
+	     }
+		 cout << endl;
+}

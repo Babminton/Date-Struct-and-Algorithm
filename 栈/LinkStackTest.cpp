@@ -3,12 +3,7 @@
 int main(){
         LinkStNode *mylinkstnode;
         InitStack(mylinkstnode);
-
-		cout << "»ØÎÄ²âÊÔ" << endl;
-	//	char x[] = "abcba";
-	    char x[] = "abc";
-		IsReverse(x);
-		Destroy(mylinkstnode);
+		conversion(10, 16);
 		return 0;
 
 }

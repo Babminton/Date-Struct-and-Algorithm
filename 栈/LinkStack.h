@@ -29,3 +29,5 @@ void Destroy(LinkStNode* &S);
 bool TraverseStack(LinkStNode *S);
 //判断回文
 bool IsReverse(char *s);
+//数值转换
+void conversion(int a, int b);
